@@ -1,10 +1,11 @@
-package dev.daniza.portfoliowatcher.ui.theme
+package com.daniza.todolist.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
-import dev.daniza.portfoliowatcher.ui.R
+import com.daniza.todolist.R
 
 val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -26,7 +27,6 @@ val displayFontFamily = FontFamily(
     )
 )
 
-// Default Material 3 typography values
 val baseline = Typography()
 
 val AppTypography = Typography(

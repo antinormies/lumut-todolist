@@ -1,4 +1,4 @@
-package dev.daniza.portfoliowatcher.ui.theme
+package com.daniza.todolist.ui.theme
 
 import android.app.Activity
 import android.os.Build

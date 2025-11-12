@@ -2,9 +2,11 @@
 agp = "8.13.1"
 kotlin = "2.0.21"
 navigationCommonKtx = "2.9.6"
+uiTextGoogleFonts = "1.9.4"
 
 [libraries]
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCommonKtx" }
+androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

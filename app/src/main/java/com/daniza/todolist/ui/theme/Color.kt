@@ -1,4 +1,4 @@
-package dev.daniza.portfoliowatcher.ui.theme
+package com.daniza.todolist.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

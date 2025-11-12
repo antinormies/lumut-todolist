@@ -42,6 +42,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.17.0")
     implementation("androidx.activity:activity-compose:1.11.0")
     implementation(libs.androidx.navigation.common.ktx)
+    implementation(libs.androidx.ui.text.google.fonts)
 
     val composeBom = platform("androidx.compose:compose-bom:2025.10.01")
     implementation(composeBom)
