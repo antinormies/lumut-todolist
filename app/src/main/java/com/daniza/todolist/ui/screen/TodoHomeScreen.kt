@@ -26,14 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.daniza.todolist.model.DetailItemModel
 import com.daniza.todolist.viewmodel.TodoViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoHomeScreen(
-    viewModel: TodoViewModel = viewModel(),
+    viewModel: TodoViewModel,
     onNavigateToDetail: (String) -> Unit,
 ){
     val listState = rememberLazyListState()
