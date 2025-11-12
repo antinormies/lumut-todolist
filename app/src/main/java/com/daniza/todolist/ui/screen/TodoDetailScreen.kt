@@ -9,19 +9,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.daniza.todolist.viewmodel.TodoViewModel
+import com.daniza.todolist.ui.widget.FullProgressLoading
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,6 +31,7 @@ fun TodoDetailScreen(
     viewModel: TodoViewModel
 ) {
     val todoDetail = viewModel.detailTodoList.collectAsStateWithLifecycle()
+    val currentLoadingState by viewModel.isLoading.collectAsStateWithLifecycle(true)
 
     LaunchedEffect(Unit) {
         viewModel.loadTodoListDetail(todoId.toIntOrNull()?:0)
@@ -42,6 +44,10 @@ fun TodoDetailScreen(
             )
         }
     ) { paddingValues ->
+
+        if(currentLoadingState){
+            FullProgressLoading()
+        }
 
         Column(
             modifier = Modifier
@@ -61,12 +67,6 @@ fun TodoDetailScreen(
                     text = "Completed",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.width(100.dp)
-                )
-                Spacer(Modifier.width(16.dp))
-                Checkbox(
-                    checked = todoDetail.value.completed,
-                    onCheckedChange = null, // disabled
-                    enabled = false
                 )
                 Spacer(Modifier.width(8.dp))
                 Text(

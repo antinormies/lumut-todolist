@@ -28,7 +28,7 @@ class TodoViewModel : ViewModel() {
     val detailTodoList: StateFlow<DetailItemModel> get()= _detailTodoList
 
     fun loadTodoListData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Main) {
             _isLoading.emit(true)
             val todoListData = withContext(Dispatchers.IO) { repository.getTodos() }
             _todoList.emit(todoListData)
@@ -37,10 +37,17 @@ class TodoViewModel : ViewModel() {
     }
 
     fun loadTodoListDetail(todoId: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Main) {
             _isLoading.emit(true)
             val detailItemData = withContext(Dispatchers.IO){ repository.getTodosDetail(todoId) }
             _detailTodoList.emit(detailItemData)
+            _isLoading.emit(false)
+        }
+    }
+
+    fun clearListState() {
+        viewModelScope.launch(Dispatchers.Main){
+            _todoList.emit(emptyList())
             _isLoading.emit(false)
         }
     }
