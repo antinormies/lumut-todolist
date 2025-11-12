@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListViewModel : ViewModel() {
+class TodoViewModel : ViewModel() {
     private val apiClient = APIClient.apiService
     private val repository: ListRepository = ListRepository(apiClient)
     private val _isLoading : MutableSharedFlow<Boolean> = MutableSharedFlow()
